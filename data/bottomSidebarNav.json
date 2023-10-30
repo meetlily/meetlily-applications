@@ -1,0 +1,32 @@
+{
+    "right": [
+        {
+            "icon_name": "close",
+            "name": "Close",
+            "drawer": "main-drawer"
+        },
+        {
+            "icon_name": "signOut",
+            "name": "Logout"
+        }
+    ],
+    "left": [
+        {
+            "icon_name": "documentation",
+            "name": "Docs",
+            "link": "/admin/documentation"
+        },
+        {
+            "icon_name": "close",
+            "name": "Close",
+            "drawer": "sidebar-drawer"
+        }
+    ],
+    "module": [
+        {
+            "icon_name": "close",
+            "name": "Close",
+            "drawer": "module-drawer"
+        }
+    ]
+}

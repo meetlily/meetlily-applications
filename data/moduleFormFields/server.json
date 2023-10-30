@@ -1,0 +1,207 @@
+[
+    {
+        "label": "Server Information",
+        "group": "Technical Information",
+        "fields": [
+            {
+                "name": "serverName",
+                "label": "Server Name",
+                "type": "text",
+                "placeholder": "Enter the server name",
+                "required": true
+            },
+            {
+                "name": "serverType",
+                "label": "Server Type",
+                "type": "select",
+                "options": [
+                    "Shared Hosting",
+                    "VPS Hosting",
+                    "Dedicated Hosting"
+                ],
+                "required": true
+            },
+            {
+                "name": "serverLocation",
+                "label": "Server Location",
+                "type": "text",
+                "placeholder": "Enter the server location",
+                "required": true
+            },
+            {
+                "name": "serverRAM",
+                "label": "Server RAM (GB)",
+                "type": "number",
+                "placeholder": "Enter the server RAM in gigabytes",
+                "required": true
+            },
+            {
+                "name": "serverStorage",
+                "label": "Server Storage (GB)",
+                "type": "number",
+                "placeholder": "Enter the server storage capacity in gigabytes",
+                "required": true
+            },
+            {
+                "name": "serverBandwidth",
+                "label": "Server Bandwidth (TB)",
+                "type": "number",
+                "placeholder": "Enter the server bandwidth in terabytes",
+                "required": true
+            },
+            {
+                "name": "serverPrice",
+                "label": "Price (per month)",
+                "type": "number",
+                "placeholder": "Enter the price per month",
+                "required": true
+            },
+            {
+                "name": "serverFeatures",
+                "label": "Server Features",
+                "type": "select",
+                "options": [
+                    "SSL Certificate",
+                    "Daily Backups",
+                    "24/7 Support",
+                    "DDoS Protection",
+                    "Domain Registration"
+                ],
+                "required": false
+            },
+            {
+                "name": "serverDescription",
+                "label": "Server Description",
+                "type": "textarea",
+                "placeholder": "Enter a description of the server",
+                "required": false
+            },
+            {
+                "name": "serverOperatingSystem",
+                "label": "Operating System",
+                "type": "select",
+                "options": [
+                    "Windows Server",
+                    "Linux (Ubuntu)",
+                    "Linux (CentOS)",
+                    "Linux (Debian)",
+                    "Other"
+                ],
+                "required": false
+            },
+            {
+                "name": "serverControlPanel",
+                "label": "Control Panel",
+                "type": "select",
+                "options": [
+                    "cPanel",
+                    "Plesk",
+                    "DirectAdmin",
+                    "Webmin",
+                    "Custom",
+                    "None"
+                ],
+                "required": false
+            },
+            {
+                "name": "serverIP",
+                "label": "Server IP Address",
+                "type": "text",
+                "placeholder": "Enter the server IP address",
+                "required": false
+            }
+        ]
+    },
+    {
+        "label": "Hardware Information",
+        "group": "Technical Information",
+        "fields": [
+            {
+                "label": "CPU Model",
+                "name": "cpuModel",
+                "type": "text",
+                "placeholder": "Enter CPU model",
+                "value": ""
+            },
+            {
+                "label": "CPU Cores",
+                "name": "cpuCores",
+                "type": "number",
+                "placeholder": "Enter number of CPU cores",
+                "value": ""
+            },
+            {
+                "label": "RAM Size",
+                "name": "ramSize",
+                "type": "number",
+                "placeholder": "Enter RAM size in GB",
+                "value": ""
+            },
+            {
+                "label": "Storage Type",
+                "name": "storageType",
+                "type": "text",
+                "placeholder": "Enter storage type",
+                "value": ""
+            },
+            {
+                "label": "Storage Size",
+                "name": "storageSize",
+                "type": "number",
+                "placeholder": "Enter storage size in GB",
+                "value": ""
+            },
+            {
+                "label": "Network Card Model",
+                "name": "networkCardModel",
+                "type": "text",
+                "placeholder": "Enter network card model",
+                "value": ""
+            }
+        ]
+    },
+    {
+        "label": "Server Information",
+        "group": "Server Details",
+        "fields": [
+            {
+                "label": "Server Provider",
+                "name": "serverProvider",
+                "type": "select",
+                "options": [
+                    "Vercel",
+                    "Netlify",
+                    "AWS",
+                    "Azure",
+                    "OVH",
+                    "Digital Ocean"
+                ],
+                "placeholder": "Select server provider"
+            },
+            {
+                "label": "Server Location",
+                "name": "serverLocation",
+                "type": "text",
+                "placeholder": "Enter server location"
+            },
+            {
+                "label": "Server Plan",
+                "name": "serverPlan",
+                "type": "text",
+                "placeholder": "Enter server plan"
+            },
+            {
+                "label": "Server Start Date",
+                "name": "serverStartDate",
+                "type": "date",
+                "placeholder": "Enter server start date"
+            },
+            {
+                "label": "Server End Date",
+                "name": "serverEndDate",
+                "type": "date",
+                "placeholder": "Enter server end date"
+            }
+        ]
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "label": "Module Information",
+        "group": "General",
+        "fields": [
+            {
+                "name": "slug",
+                "label": "Slug",
+                "type": "hidden",
+                "required": true
+            },
+            {
+                "name": "name",
+                "label": "Name",
+                "type": "text",
+                "placeholder": "Enter the display name",
+                "required": true
+            },
+            {
+                "name": "description",
+                "label": "Description",
+                "type": "textarea",
+                "placeholder": "Enter the description",
+                "required": true
+            },
+            {
+                "name": "allowMembers",
+                "label": "Allow Members",
+                "type": "toggle",
+                "placeholder": "Set this to enable this module",
+                "required": false
+            },
+            {
+                "name": "installed",
+                "label": "Installed",
+                "type": "toggle",
+                "placeholder": "Set this if module is installed",
+                "required": false
+            },
+            {
+                "name": "global",
+                "label": "Global",
+                "type": "toggle",
+                "placeholder": "Set this to enable globally",
+                "required": false
+            },
+            {
+                "name": "externalLink",
+                "label": "External Link",
+                "type": "url",
+                "placeholder": "Set this for external link of this module",
+                "required": false
+            },
+            {
+                "name": "Category",
+                "label": "Category",
+                "type": "select",
+                "options": [
+                    "Administration",
+                    "Applications"
+                ],
+                "required": false,
+                "multiple": true
+            }
+        ],
+        "values": {
+            "slug": "flow",
+            "name": "Flow",
+            "enabled": true,
+            "installed": true,
+            "global": true,
+            "Category": "Applications",
+            "externalLink": "https://flow.meetlily.net",
+            "User": {
+                "connect": {
+                    "id": "your_currentUser_id_value"
+                }
+            },
+            "Organization": {
+                "connect": {
+                    "id": "your_currentUser_Organization_id_value"
+                }
+            }
+        }
+    }
+]
