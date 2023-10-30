@@ -19,20 +19,18 @@ export const metadata: Metadata = {
   description: "Check out some app built using the components.",
 }
 
-interface DashboardLayoutProps {
+interface SwingerLayoutProps {
   children: React.ReactNode
 }
 
-export default function DashboardLayout({ children }: DashboardLayoutProps) {
+export default function SwingerLayout({ children }: SwingerLayoutProps) {
   return (
     <>
-      <div className="fluid px-4 relative">
-        <section>
-          <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
-            {children}
-          </div>
-        </section>
-      </div>
+      <section>
+        <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
+          {children}
+        </div>
+      </section>
     </>
   )
 }

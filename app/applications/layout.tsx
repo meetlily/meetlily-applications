@@ -26,8 +26,8 @@ export default function ApplicationsLayout({
 }: ApplicationsLayoutProps) {
   return (
     <>
-      <div className="container relative">
-        <PageHeader className="page-header pb-8">
+      <div className="px-4 relative">
+        {/* <PageHeader className="page-header pb-8">
           <Link
             href="/docs/changelog"
             className="inline-flex items-center rounded-lg bg-muted px-3 py-1 text-sm font-medium"
@@ -66,9 +66,9 @@ export default function ApplicationsLayout({
               Components
             </Link>
           </section>
-        </PageHeader>
+        </PageHeader> */}
         <section>
-          <ApplicationsNav />
+          {/* <ApplicationsNav /> */}
           <div className="overflow-hidden rounded-[0.5rem] border bg-background shadow">
             {children}
           </div>

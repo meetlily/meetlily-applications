@@ -52,8 +52,11 @@ const data = [
     total: Math.floor(Math.random() * 5000) + 1000,
   },
 ]
-
-export function Overview() {
+interface OverviewProps {
+  overview: any
+}
+export default function Overview({ overview }: OverviewProps) {
+  console.log(overview)
   return (
     <ResponsiveContainer width="100%" height={350}>
       <BarChart data={data}>

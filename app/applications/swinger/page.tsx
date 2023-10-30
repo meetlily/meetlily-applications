@@ -16,25 +16,29 @@ import {
 } from "@/registry/new-york/ui/tabs"
 
 import { CalendarDateRangePicker } from "@/app/dashboard/components/date-range-picker"
-import { MainNav } from "@/app/dashboard/components/main-nav"
-import { Overview } from "@/app/dashboard/components/overview"
 import { RecentSales } from "@/app/dashboard/components/recent-sales"
 import { Search } from "@/app/dashboard/components/search"
 import TeamSwitcher from "@/app/dashboard/components/team-switcher"
 
 import getCurrentUser from "../../actions/getCurrentUser"
-import { getSLSSessions } from "../../actions/getSLSData"
+import {
+  getSLSMembers,
+  getSLSMembersCount,
+  getSLSRooms,
+  getSLSSessions,
+} from "../../actions/getSLSData"
+import ActiveMembers from "./components/ActiveMembers"
+import ActiveRooms from "./components/ActiveRooms"
 import AvatarNav from "./components/AvatarNav"
+import TotalRooms from "./components/TotalRooms"
+import Overview from "./components/overview"
 import { UserNav } from "./components/user-nav"
 
-export const metadata: Metadata = {
-  title: "Dashboard",
-  description: "Example dashboard app built using the components.",
-}
-
-export default async function DashboardPage() {
+export default async function SwingersPage() {
   const currentUser = await getCurrentUser()
-  const SLSSessions = await getSLSSessions()
+  const SLSSessions: any = await getSLSSessions()
+  const rooms: any = await getSLSRooms()
+  const membersCount: any = await getSLSMembersCount()
   return (
     <>
       <div className="md:hidden">
@@ -58,7 +62,7 @@ export default async function DashboardPage() {
           <div className="flex h-16 items-center px-4">
             {/* <TeamSwitcher currentUser={currentUser} />
             <MainNav className="mx-6" /> */}
-            <h2 className="text-3xl font-bold tracking-tight">Dashboard</h2>
+            <h2 className="text-3xl font-bold tracking-tight">Swingers</h2>
             <div className="ml-auto flex items-center space-x-4">
               <Search />
 
@@ -108,7 +112,7 @@ export default async function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Total Revenue
+                      Total Rooms
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +128,7 @@ export default async function DashboardPage() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">$45,231.89</div>
+                    <div className="text-2xl font-bold">{rooms.length}</div>
                     <p className="text-xs text-muted-foreground">
                       +20.1% from last month
                     </p>
@@ -133,7 +137,7 @@ export default async function DashboardPage() {
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                     <CardTitle className="text-sm font-medium">
-                      Subscriptions
+                      Active Rooms
                     </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -151,7 +155,9 @@ export default async function DashboardPage() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+2350</div>
+                    <div className="text-2xl font-bold">
+                      {SLSSessions && <ActiveRooms rooms={SLSSessions} />}
+                    </div>
                     <p className="text-xs text-muted-foreground">
                       +180.1% from last month
                     </p>
@@ -159,7 +165,9 @@ export default async function DashboardPage() {
                 </Card>
                 <Card>
                   <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">Sales</CardTitle>
+                    <CardTitle className="text-sm font-medium">
+                      Total Members
+                    </CardTitle>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 24 24"
@@ -175,7 +183,7 @@ export default async function DashboardPage() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+12,234</div>
+                    <div className="text-2xl font-bold">{membersCount}</div>
                     <p className="text-xs text-muted-foreground">
                       +19% from last month
                     </p>
@@ -200,7 +208,9 @@ export default async function DashboardPage() {
                     </svg>
                   </CardHeader>
                   <CardContent>
-                    <div className="text-2xl font-bold">+573</div>
+                    <div className="text-2xl font-bold">
+                      {SLSSessions && <ActiveMembers rooms={SLSSessions} />}
+                    </div>
                     <p className="text-xs text-muted-foreground">
                       +201 since last hour
                     </p>
@@ -213,7 +223,7 @@ export default async function DashboardPage() {
                     <CardTitle>Overview</CardTitle>
                   </CardHeader>
                   <CardContent className="pl-2">
-                    <Overview />
+                    <Overview overview={SLSSessions} />
                   </CardContent>
                 </Card>
                 <Card className="col-span-3">
