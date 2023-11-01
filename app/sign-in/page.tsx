@@ -1,9 +1,8 @@
 import { Metadata } from "next"
 import Image from "next/image"
 import Link from "next/link"
-import { buttonVariants } from "@/registry/new-york/ui/button"
 
-import { cn } from "@/lib/utils"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 
 import getCurrentUser from "../actions/getCurrentUser"
 import { UserAuthForm } from "./components/user-auth-form"

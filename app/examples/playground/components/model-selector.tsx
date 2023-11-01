@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { PopoverProps } from "@radix-ui/react-popover"
-
-import { cn } from "@/lib/utils"
-import { useMutationObserver } from "@/hooks/use-mutation-observer"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -26,6 +21,11 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import { PopoverProps } from "@radix-ui/react-popover"
+
+import { cn } from "@/lib/utils"
+import { useMutationObserver } from "@/hooks/use-mutation-observer"
 
 import { Model, ModelType } from "../data/models"
 
@@ -35,9 +35,9 @@ interface ModelSelectorProps extends PopoverProps {
 }
 
 export function ModelSelector({ models, types, ...props }: ModelSelectorProps) {
-  const [open, setOpen] = React.useState(false)
-  const [selectedModel, setSelectedModel] = React.useState<Model>(models[0])
-  const [peekedModel, setPeekedModel] = React.useState<Model>(models[0])
+  const [open, setOpen] = useState(false)
+  const [selectedModel, setSelectedModel] = useState<Model>(models[0])
+  const [peekedModel, setPeekedModel] = useState<Model>(models[0])
 
   return (
     <div className="grid gap-2">

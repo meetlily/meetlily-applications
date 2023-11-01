@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    domains: ["avatars.githubusercontent.com", "images.unsplash.com", "lh3.googleusercontent.com"],
+    domains: ["avatars.githubusercontent.com", "images.unsplash.com", "lh3.googleusercontent.com", "cdn.swinglifestyle.com"],
   },
   redirects() {
     return [

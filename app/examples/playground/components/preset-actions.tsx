@@ -1,9 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { Dialog } from "@radix-ui/react-dialog"
-import { DotsHorizontalIcon } from "@radix-ui/react-icons"
-
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -31,10 +28,12 @@ import {
 import { Label } from "@/registry/new-york/ui/label"
 import { Switch } from "@/registry/new-york/ui/switch"
 import { toast } from "@/registry/new-york/ui/use-toast"
+import { Dialog } from "@radix-ui/react-dialog"
+import { DotsHorizontalIcon } from "@radix-ui/react-icons"
 
 export function PresetActions() {
-  const [open, setIsOpen] = React.useState(false)
-  const [showDeleteDialog, setShowDeleteDialog] = React.useState(false)
+  const [open, setIsOpen] = useState(false)
+  const [showDeleteDialog, setShowDeleteDialog] = useState(false)
 
   return (
     <>

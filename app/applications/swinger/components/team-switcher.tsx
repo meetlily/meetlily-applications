@@ -1,7 +1,6 @@
 "use client"
 
-import * as React from "react"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import {
   Avatar,
   AvatarFallback,
@@ -73,9 +72,9 @@ export default function TeamSwitcher({
   currentUser,
   className,
 }: TeamSwitcherProps) {
-  const [open, setOpen] = React.useState(false)
-  const [showNewOrgDialog, setShowNewOrgDialog] = React.useState(false)
-  const [selectedOrganization, setSelectedOrganization] = React.useState<any>()
+  const [open, setOpen] = useState(false)
+  const [showNewOrgDialog, setShowNewOrgDialog] = useState(false)
+  const [selectedOrganization, setSelectedOrganization] = useState<any>()
 
   useEffect(() => {
     Object.keys(currentUser.Default).map((d) => {

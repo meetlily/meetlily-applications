@@ -64,7 +64,7 @@ export function CardsActivityGoal() {
   const [config] = useConfig()
 
   const theme = themes.find((theme) => theme.name === config.theme)
-  const [goal, setGoal] = React.useState(350)
+  const [goal, setGoal] = useState(350)
 
   function onClick(adjustment: number) {
     setGoal(Math.max(200, Math.min(400, goal + adjustment)))

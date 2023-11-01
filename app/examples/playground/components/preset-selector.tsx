@@ -2,10 +2,6 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
-import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
-import { PopoverProps } from "@radix-ui/react-popover"
-
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -19,6 +15,10 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
+import { CaretSortIcon, CheckIcon } from "@radix-ui/react-icons"
+import { PopoverProps } from "@radix-ui/react-popover"
+
+import { cn } from "@/lib/utils"
 
 import { Preset } from "../data/presets"
 
@@ -27,8 +27,8 @@ interface PresetSelectorProps extends PopoverProps {
 }
 
 export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
-  const [open, setOpen] = React.useState(false)
-  const [selectedPreset, setSelectedPreset] = React.useState<Preset>()
+  const [open, setOpen] = useState(false)
+  const [selectedPreset, setSelectedPreset] = useState<Preset>()
   const router = useRouter()
 
   return (

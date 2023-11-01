@@ -1,49 +1,24 @@
 "use client"
 
-// import useMainDrawer from '@/hooks/useMainDrawer';
-// import useSidebarDrawer from '@/hooks/useSidebarDrawer';
-// import { SafeUser } from '@/app/types';
-import { useCallback, useEffect, useState } from "react"
 import Image from "next/image"
 
 import IconComponent from "@/components/icon/IconComponent"
 
 interface AvatarProps {
   image?: string
-  currentUser?: any
+  user?: any
   height?: number
   width?: number
 }
-const AvatarNav: React.FC<AvatarProps> = ({
-  image,
-  currentUser,
-  height,
-  width,
-}) => {
+const AvatarNav: React.FC<AvatarProps> = ({ image, user, height, width }) => {
   if (!image) {
     image = "/images/placeholder.jpg"
   }
-  // const mainDrawer = useMainDrawer();
-  // const sidebarDrawer = useSidebarDrawer();
 
-  const [isLoading, setIsLoading] = useState(false)
-  const [showDrawer, setShowDrawer] = useState(false)
-
-  useEffect(() => {}, [setShowDrawer])
-  // const toggleMainDrawer = useCallback(() => {
-  // 	if (!mainDrawer.isOpen) {
-  // 		mainDrawer.onOpen();
-  // 	} else {
-  // 		mainDrawer.onClose();
-  // 	}
-  // }, [mainDrawer]);
   return (
     <>
-      <div
-        //onClick={toggleMainDrawer}
-        className="cursor-pointer flex flex-col items-center justify-center"
-      >
-        {currentUser && image ? (
+      <div className="cursor-pointer flex flex-col items-center justify-center">
+        {user && image ? (
           <Image
             className="rounded-full text-center mx-auto block hover:bg-white"
             src={image ? image : "/images/placeholder.jpg"}

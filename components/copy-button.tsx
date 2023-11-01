@@ -1,12 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
-import { CheckIcon, CopyIcon } from "@radix-ui/react-icons"
-import { NpmCommands } from "types/unist"
-
-import { Event, trackEvent } from "@/lib/events"
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
@@ -14,6 +8,12 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
+import { DropdownMenuTriggerProps } from "@radix-ui/react-dropdown-menu"
+import { CheckIcon, CopyIcon } from "@radix-ui/react-icons"
+import { NpmCommands } from "types/unist"
+
+import { Event, trackEvent } from "@/lib/events"
+import { cn } from "@/lib/utils"
 
 interface CopyButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
   value: string
@@ -35,7 +35,7 @@ export function CopyButton({
   event,
   ...props
 }: CopyButtonProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const [hasCopied, setHasCopied] = useState(false)
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -89,7 +89,7 @@ export function CopyWithClassNames({
   className,
   ...props
 }: CopyWithClassNamesProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const [hasCopied, setHasCopied] = useState(false)
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -142,7 +142,7 @@ export function CopyNpmCommandButton({
   className,
   ...props
 }: CopyNpmCommandButtonProps) {
-  const [hasCopied, setHasCopied] = React.useState(false)
+  const [hasCopied, setHasCopied] = useState(false)
 
   React.useEffect(() => {
     setTimeout(() => {

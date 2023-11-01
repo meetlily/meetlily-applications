@@ -108,15 +108,15 @@ export default App
 Place a mode toggle on your site to toggle between light and dark mode.
 
 ```tsx title="components/mode-toggle.tsx"
-import { Moon, Sun } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
+} from "@/registry/new-york/ui/dropdown-menu"
+import { Moon, Sun } from "lucide-react"
+
 import { useTheme } from "@/components/theme-provider"
 
 export function ModeToggle() {

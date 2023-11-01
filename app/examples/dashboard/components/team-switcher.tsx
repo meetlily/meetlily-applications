@@ -2,13 +2,6 @@
 
 import * as React from "react"
 import {
-  CaretSortIcon,
-  CheckIcon,
-  PlusCircledIcon,
-} from "@radix-ui/react-icons"
-
-import { cn } from "@/lib/utils"
-import {
   Avatar,
   AvatarFallback,
   AvatarImage,
@@ -46,6 +39,13 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/registry/new-york/ui/select"
+import {
+  CaretSortIcon,
+  CheckIcon,
+  PlusCircledIcon,
+} from "@radix-ui/react-icons"
+
+import { cn } from "@/lib/utils"
 
 const groups = [
   {
@@ -79,11 +79,9 @@ type PopoverTriggerProps = React.ComponentPropsWithoutRef<typeof PopoverTrigger>
 interface TeamSwitcherProps extends PopoverTriggerProps {}
 
 export default function TeamSwitcher({ className }: TeamSwitcherProps) {
-  const [open, setOpen] = React.useState(false)
-  const [showNewTeamDialog, setShowNewTeamDialog] = React.useState(false)
-  const [selectedTeam, setSelectedTeam] = React.useState<Team>(
-    groups[0].teams[0]
-  )
+  const [open, setOpen] = useState(false)
+  const [showNewTeamDialog, setShowNewTeamDialog] = useState(false)
+  const [selectedTeam, setSelectedTeam] = useState<Team>(groups[0].teams[0])
 
   return (
     <Dialog open={showNewTeamDialog} onOpenChange={setShowNewTeamDialog}>

@@ -65,7 +65,7 @@ import {
   CommandList,
   CommandSeparator,
   CommandShortcut,
-} from "@/components/ui/command"
+} from "@/registry/new-york/ui/command"
 ```
 
 ```tsx
@@ -98,7 +98,7 @@ To show the command menu in a dialog, use the `<CommandDialog />` component.
 
 ```tsx
 export function CommandMenu() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {

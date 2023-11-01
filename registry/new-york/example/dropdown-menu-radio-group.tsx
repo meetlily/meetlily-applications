@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { Button } from "@/registry/new-york/ui/button"
 import {
   DropdownMenu,
@@ -14,7 +13,7 @@ import {
 } from "@/registry/new-york/ui/dropdown-menu"
 
 export default function DropdownMenuRadioGroupDemo() {
-  const [position, setPosition] = React.useState("bottom")
+  const [position, setPosition] = useState("bottom")
 
   return (
     <DropdownMenu>

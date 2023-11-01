@@ -1,8 +1,9 @@
 import axios from "axios"
+import moment from "moment"
 
-const SLS_API_KEY = process.env.SLS_API_KEY
+const SLS_API_KEY = "dTK6LOd93Mpdv1DP3sk4xfEQm7IGtYLD2"
 
-const SLS_API_URL = process.env.SLS_API_URL
+const SLS_API_URL = "https://chatv.swinglifestyle.com"
 const SLS_TURN_URL = process.env.SLS_TURN_URL
 const SLS_USERNAME = "OPENVIDUAPP"
 
@@ -98,10 +99,41 @@ export async function getSLSMembersCount(): Promise<string> {
     return ""
   }
 }
+export async function getSLSMessagesCount(): Promise<string> {
+  try {
+    const response = await axios.get(
+      `${process.env.SLS_API_URL}/messages/count?token=${SLS_API_KEY}`
+    )
+    const data = response.data
+
+    return data
+  } catch (error) {
+    console.error("Error retrieving public IP:", error)
+    return ""
+  }
+}
+export async function getSLSMessagesByRoom(
+  sessionId: any,
+  date?: string
+): Promise<string> {
+  try {
+    let now = moment().add(1, "day").format("YYYY-MM-DD")
+
+    const response = await axios.get(
+      `https://chatv.swinglifestyle.com/messages/?roomId=${sessionId}&created_at_lt=${now}&_sort=created_at:desc&token=${SLS_API_KEY}`
+    )
+    const data = response.data
+
+    return data
+  } catch (error) {
+    console.error("Error retrieving public IP:", error)
+    return ""
+  }
+}
 export async function getSLSMembers(): Promise<string> {
   try {
     const response = await axios.get(
-      "https://chatv.swinglifestyle.com/users?token=" + SLS_API_KEY
+      `${process.env.SLS_API_URL}/users?token=${SLS_API_KEY}`
     )
     const data = response.data
     return data

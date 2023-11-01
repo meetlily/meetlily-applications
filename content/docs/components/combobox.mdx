@@ -18,22 +18,22 @@ See installation instructions for the [Popover](/docs/components/popover#install
 "use client"
 
 import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
-
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
   CommandItem,
-} from "@/components/ui/command"
+} from "@/registry/new-york/ui/command"
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/registry/new-york/ui/popover"
+import { Check, ChevronsUpDown } from "lucide-react"
+
+import { cn } from "@/lib/utils"
 
 const frameworks = [
   {
@@ -59,8 +59,8 @@ const frameworks = [
 ]
 
 export function ComboboxDemo() {
-  const [open, setOpen] = React.useState(false)
-  const [value, setValue] = React.useState("")
+  const [open, setOpen] = useState(false)
+  const [value, setValue] = useState("")
 
   return (
     <Popover open={open} onOpenChange={setOpen}>

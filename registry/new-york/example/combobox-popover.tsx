@@ -1,7 +1,6 @@
 "use client"
 
 import * as React from "react"
-
 import { Button } from "@/registry/new-york/ui/button"
 import {
   Command,
@@ -46,10 +45,8 @@ const statuses: Status[] = [
 ]
 
 export default function ComboboxPopover() {
-  const [open, setOpen] = React.useState(false)
-  const [selectedStatus, setSelectedStatus] = React.useState<Status | null>(
-    null
-  )
+  const [open, setOpen] = useState(false)
+  const [selectedStatus, setSelectedStatus] = useState<Status | null>(null)
 
   return (
     <div className="flex items-center space-x-4">

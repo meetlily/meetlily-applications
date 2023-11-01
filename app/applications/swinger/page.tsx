@@ -1,245 +1,67 @@
-import { Metadata } from "next"
-import Image from "next/image"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/registry/new-york/ui/card"
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/registry/new-york/ui/tabs"
+import { SessionsTypes } from "@/types/openvidu"
+import { RoomType } from "@/types/sls"
 
-import { CalendarDateRangePicker } from "@/app/dashboard/components/date-range-picker"
-import { RecentSales } from "@/app/dashboard/components/recent-sales"
-import { Search } from "@/app/dashboard/components/search"
-import TeamSwitcher from "@/app/dashboard/components/team-switcher"
-
-import getCurrentUser from "../../actions/getCurrentUser"
 import {
   getSLSMembers,
   getSLSMembersCount,
+  getSLSMessagesByRoom,
+  getSLSMessagesCount,
   getSLSRooms,
-  getSLSSessions,
 } from "../../actions/getSLSData"
-import ActiveMembers from "./components/ActiveMembers"
-import ActiveRooms from "./components/ActiveRooms"
-import AvatarNav from "./components/AvatarNav"
-import TotalRooms from "./components/TotalRooms"
-import Overview from "./components/overview"
-import { UserNav } from "./components/user-nav"
+import { getViduSessions } from "../../actions/openvidu"
+import DashboardTabContent from "./components/DashboardTabContent"
+
+let defaultGroup = { roomId: "487f7b22f68312d2c1bbc93b1aea445b" }
+
+export async function getSwingersSessions(sessions: SessionsTypes) {
+  const rooms: RoomType[] | any = await getSLSRooms()
+  if (rooms) {
+    rooms?.map((room: RoomType, i: number) => {
+      rooms[i].default = false
+      if (defaultGroup.roomId === room.roomId) {
+        rooms[i].default = true
+        defaultGroup = {
+          ...defaultGroup,
+          ...rooms[i],
+        }
+      }
+      const session = sessions.content?.find(
+        (obj: any) => obj.customSessionId === room.roomId
+      )
+
+      rooms[i].active = false
+      rooms[i].session = null
+      if (session) {
+        rooms[i].active = true
+        rooms[i].session = session
+      }
+    })
+  }
+
+  return rooms
+}
 
 export default async function SwingersPage() {
-  const currentUser = await getCurrentUser()
-  const SLSSessions: any = await getSLSSessions()
-  const rooms: any = await getSLSRooms()
+  const sessions: any = await getViduSessions()
+  const rooms = await getSwingersSessions(sessions)
   const membersCount: any = await getSLSMembersCount()
+  const chatCount: any = await getSLSMessagesCount()
+  const members: any = await getSLSMembers()
+  const messages: any = await getSLSMessagesByRoom(defaultGroup.roomId)
+  const props = {
+    rooms,
+    sessions,
+    membersCount,
+    chatCount,
+    members,
+    defaultGroup,
+    messages,
+  }
   return (
     <>
-      <div className="md:hidden">
-        <Image
-          src="/dashboard-light.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="block dark:hidden"
-        />
-        <Image
-          src="/dashboard-dark.png"
-          width={1280}
-          height={866}
-          alt="Dashboard"
-          className="hidden dark:block"
-        />
-      </div>
-      <div className="hidden flex-col md:flex">
-        <div className="border-b">
-          <div className="flex h-16 items-center px-4">
-            {/* <TeamSwitcher currentUser={currentUser} />
-            <MainNav className="mx-6" /> */}
-            <h2 className="text-3xl font-bold tracking-tight">Swingers</h2>
-            <div className="ml-auto flex items-center space-x-4">
-              <Search />
-
-              {/* <AvatarNav
-                currentUser={currentUser}
-                width={30}
-                height={30}
-                image={
-                  currentUser?.image
-                    ? currentUser.image
-                    : "/images/placeholder.jpg"
-                }
-              /> */}
-            </div>
-          </div>
-        </div>
-        <div className="space-y-4 p-8 pt-6">
-          <Tabs defaultValue="overview" className=" space-y-4">
-            <div className="flex flex-row w-full">
-              <div className="flex">
-                <TabsList>
-                  <TabsTrigger value="overview">Overview</TabsTrigger>
-                  <TabsTrigger value="analytics" disabled>
-                    Analytics
-                  </TabsTrigger>
-                  <TabsTrigger value="reports" disabled>
-                    Reports
-                  </TabsTrigger>
-                  <TabsTrigger value="notifications" disabled>
-                    Notifications
-                  </TabsTrigger>
-                </TabsList>
-              </div>
-
-              <div className="flex w-full justify-end">
-                <div className="flex items-center justify-between space-y-2">
-                  <div className="flex items-center space-x-2">
-                    <CalendarDateRangePicker />
-                    <Button>Download</Button>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <TabsContent value="overview" className="space-y-4">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Total Rooms
-                    </CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
-                    </svg>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">{rooms.length}</div>
-                    <p className="text-xs text-muted-foreground">
-                      +20.1% from last month
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Active Rooms
-                    </CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">
-                      {SLSSessions && <ActiveRooms rooms={SLSSessions} />}
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      +180.1% from last month
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Total Members
-                    </CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <rect width="20" height="14" x="2" y="5" rx="2" />
-                      <path d="M2 10h20" />
-                    </svg>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">{membersCount}</div>
-                    <p className="text-xs text-muted-foreground">
-                      +19% from last month
-                    </p>
-                  </CardContent>
-                </Card>
-                <Card>
-                  <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                    <CardTitle className="text-sm font-medium">
-                      Active Now
-                    </CardTitle>
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      className="h-4 w-4 text-muted-foreground"
-                    >
-                      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-                    </svg>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-2xl font-bold">
-                      {SLSSessions && <ActiveMembers rooms={SLSSessions} />}
-                    </div>
-                    <p className="text-xs text-muted-foreground">
-                      +201 since last hour
-                    </p>
-                  </CardContent>
-                </Card>
-              </div>
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-7">
-                <Card className="col-span-4">
-                  <CardHeader>
-                    <CardTitle>Overview</CardTitle>
-                  </CardHeader>
-                  <CardContent className="pl-2">
-                    <Overview overview={SLSSessions} />
-                  </CardContent>
-                </Card>
-                <Card className="col-span-3">
-                  <CardHeader>
-                    <CardTitle>Recent Sales</CardTitle>
-                    <CardDescription>
-                      You made 265 sales this month.
-                    </CardDescription>
-                  </CardHeader>
-                  <CardContent>
-                    <RecentSales />
-                  </CardContent>
-                </Card>
-              </div>
-            </TabsContent>
-          </Tabs>
+      <div className="flex-col md:flex">
+        <div className="relative h-full">
+          <DashboardTabContent {...props} />
         </div>
       </div>
     </>

@@ -1,4 +1,5 @@
 import * as React from "react"
+import { Label } from "@/registry/new-york/ui/label"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { Slot } from "@radix-ui/react-slot"
 import {
@@ -11,7 +12,6 @@ import {
 } from "react-hook-form"
 
 import { cn } from "@/lib/utils"
-import { Label } from "@/components/ui/label"
 
 const Form = FormProvider
 
@@ -155,7 +155,10 @@ const FormMessage = React.forwardRef<
     <p
       ref={ref}
       id={formMessageId}
-      className={cn("text-sm font-medium text-red-500 dark:text-red-900", className)}
+      className={cn(
+        "text-sm font-medium text-red-500 dark:text-red-900",
+        className
+      )}
       {...props}
     >
       {body}

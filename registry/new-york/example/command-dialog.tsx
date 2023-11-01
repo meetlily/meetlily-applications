@@ -2,15 +2,6 @@
 
 import * as React from "react"
 import {
-  CalendarIcon,
-  EnvelopeClosedIcon,
-  FaceIcon,
-  GearIcon,
-  PersonIcon,
-  RocketIcon,
-} from "@radix-ui/react-icons"
-
-import {
   CommandDialog,
   CommandEmpty,
   CommandGroup,
@@ -20,9 +11,17 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/registry/new-york/ui/command"
+import {
+  CalendarIcon,
+  EnvelopeClosedIcon,
+  FaceIcon,
+  GearIcon,
+  PersonIcon,
+  RocketIcon,
+} from "@radix-ui/react-icons"
 
 export default function CommandDialogDemo() {
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {

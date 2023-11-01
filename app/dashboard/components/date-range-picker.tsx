@@ -1,11 +1,6 @@
 "use client"
 
 import * as React from "react"
-import { CalendarIcon } from "@radix-ui/react-icons"
-import { addDays, format } from "date-fns"
-import { DateRange } from "react-day-picker"
-
-import { cn } from "@/lib/utils"
 import { Button } from "@/registry/new-york/ui/button"
 import { Calendar } from "@/registry/new-york/ui/calendar"
 import {
@@ -13,11 +8,16 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/registry/new-york/ui/popover"
+import { CalendarIcon } from "@radix-ui/react-icons"
+import { addDays, format } from "date-fns"
+import { DateRange } from "react-day-picker"
+
+import { cn } from "@/lib/utils"
 
 export function CalendarDateRangePicker({
   className,
 }: React.HTMLAttributes<HTMLDivElement>) {
-  const [date, setDate] = React.useState<DateRange | undefined>({
+  const [date, setDate] = useState<DateRange | undefined>({
     from: new Date(2023, 0, 20),
     to: addDays(new Date(2023, 0, 20), 20),
   })

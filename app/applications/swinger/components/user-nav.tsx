@@ -1,4 +1,6 @@
 import Link from "next/link"
+import { signOut } from "next-auth/react"
+
 import {
   Avatar,
   AvatarFallback,
@@ -15,7 +17,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "@/registry/new-york/ui/dropdown-menu"
-import { signOut } from "next-auth/react"
 
 export function UserNav() {
   const signOutUser = () => {

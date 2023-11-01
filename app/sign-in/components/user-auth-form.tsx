@@ -1,15 +1,15 @@
 "use client"
 
-import * as React from "react"
+import { useEffect, useState } from "react"
 import { redirect, useRouter } from "next/navigation"
-import { Button } from "@/registry/new-york/ui/button"
-import { Input } from "@/registry/new-york/ui/input"
-import { Label } from "@/registry/new-york/ui/label"
 import { Box, Flex } from "@radix-ui/themes"
 import { signIn } from "next-auth/react"
 
 import { SafeUser } from "@/types/form"
 import { cn } from "@/lib/utils"
+import { Button } from "@/registry/new-york/ui/button"
+import { Input } from "@/registry/new-york/ui/input"
+import { Label } from "@/registry/new-york/ui/label"
 import { Icons } from "@/components/icons"
 
 interface UserAuthFormProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -21,8 +21,8 @@ export function UserAuthForm({
   className,
   ...props
 }: UserAuthFormProps) {
-  const [isLoading, setIsLoading] = React.useState<boolean>(false)
-  React.useEffect(() => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+  useEffect(() => {
     if (currentUser) {
       redirect("/dashboard")
     }

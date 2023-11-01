@@ -1,4 +1,5 @@
-import React from "react"
+import React, { useState } from "react"
+
 import { Button } from "@/registry/new-york/ui/button"
 import { Input } from "@/registry/new-york/ui/input"
 import { Label } from "@/registry/new-york/ui/label"
@@ -16,8 +17,8 @@ import {
 import IconComponent from "../icon/IconComponent"
 
 export default function LeftSheet() {
-  const [leftDrawer, setLeftDrawer] = React.useState(false)
-  const [leftIcon, setLeftIcon] = React.useState<string>("layoutSideLeftOff")
+  const [leftDrawer, setLeftDrawer] = useState(false)
+  const [leftIcon, setLeftIcon] = useState<string>("layoutSideLeftOff")
   // const toggleLeftDrawer = () => {
   //   if (leftDrawer) {
   //     setLeftDrawer(false)

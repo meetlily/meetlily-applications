@@ -2,6 +2,16 @@
 
 import * as React from "react"
 import { useRouter } from "next/navigation"
+import { Button } from "@/registry/new-york/ui/button"
+import {
+  CommandDialog,
+  CommandEmpty,
+  CommandGroup,
+  CommandInput,
+  CommandItem,
+  CommandList,
+  CommandSeparator,
+} from "@/registry/new-york/ui/command"
 import { DialogProps } from "@radix-ui/react-alert-dialog"
 import {
   CircleIcon,
@@ -14,20 +24,10 @@ import { useTheme } from "next-themes"
 
 import { docsConfig } from "@/config/docs"
 import { cn } from "@/lib/utils"
-import { Button } from "@/registry/new-york/ui/button"
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandGroup,
-  CommandInput,
-  CommandItem,
-  CommandList,
-  CommandSeparator,
-} from "@/registry/new-york/ui/command"
 
 export function CommandMenu({ ...props }: DialogProps) {
   const router = useRouter()
-  const [open, setOpen] = React.useState(false)
+  const [open, setOpen] = useState(false)
   const { setTheme } = useTheme()
 
   React.useEffect(() => {

@@ -3,10 +3,10 @@
 import React, { useEffect, useState } from "react"
 import Link from "next/link"
 import { usePathname, useRouter } from "next/navigation"
+import { buttonVariants } from "@/registry/new-york/ui/button"
 
 import { SafeUser } from "@/types/form"
 import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 import { MainNav } from "@/components/main-nav"
 import { ThemeToggle } from "@/components/theme-toggle"
